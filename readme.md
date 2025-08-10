@@ -68,6 +68,13 @@ The complete requirements.txt content is documented in REQUIREMENTS.md since dir
 The application reads configuration from environment variables, particularly for session secrets and deployment settings, making it suitable for various deployment environments including development and production.
 
 ## Install
-```
-idk for yet
+```terminal
+Git clone https://github.com/shayanghad0/Owerview-doct-marznehshin
+cd Owerview-doct-marznehshin
+pip install -r need.txt
+#each python version runner
+python app.py
+python3 app.py
+py app.py
+
 ```
