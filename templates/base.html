@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="{{ get_current_language() }}" dir="{{ 'rtl' if get_current_language() == 'fa' else 'ltr' }}"{% if get_current_language() == 'fa' %} class="persian"{% endif %}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#23272f">
+    <title>{% block title %}{{ get_text('hero_title') }} {{ get_text('hero_title_gradient') }}{% endblock %}</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <!-- SEO and Meta Tags -->
+    <meta name="description" content="{% block description %}Marzneshin is a modern, efficient, secure and user-friendly proxy management tool with multi-core optimization.{% endblock %}">
+    <meta name="keywords" content="proxy, manager, xray, hysteria, vpn, security, multi-core">
+    <meta name="author" content="Marzneshin Team">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="{% block og_title %}Marzneshin - Modern Multi-Core Proxy Manager{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Efficient, secure and user-friendly proxy management tool{% endblock %}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.url }}">
+    
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('homepage') }}">
+                <i class="fas fa-shield-alt me-2"></i>Marzneshin
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('homepage') }}">{{ get_text('nav_home') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('docs_homepage') }}">{{ get_text('nav_docs') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/marzneshin/marzneshin" target="_blank">
+                            <i class="fab fa-github me-1"></i>{{ get_text('nav_github') }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link language-switch" href="{{ url_for('set_language_route', lang_code='fa' if get_current_language() == 'en' else 'en') }}">
+                            <i class="fas fa-language me-1"></i>{{ get_text('language_switch') }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Toggle for Documentation -->
+    {% if request.endpoint in ['docs_homepage', 'show_documentation_page'] %}
+    <button id="mobile-menu-toggle" class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+    <div id="mobile-overlay" class="mobile-menu-overlay"></div>
+    {% endif %}
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-shield-alt me-2"></i>Marzneshin</h5>
+                    <p class="text-muted">{{ get_text('footer_desc') }}</p>
+                    <p class="text-muted">{{ get_text('footer_desc2') }}</p>
+                </div>
+                <div class="col-md-3">
+                    <h6>{{ get_text('footer_docs') }}</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ url_for('docs_homepage') }}" class="text-muted text-decoration-none">{{ get_text('footer_get_started') }}</a></li>
+                        <li><a href="{{ url_for('show_documentation_page', page_slug='overview') }}" class="text-muted text-decoration-none">{{ get_text('footer_overview') }}</a></li>
+                        <li><a href="{{ url_for('show_documentation_page', page_slug='installation') }}" class="text-muted text-decoration-none">{{ get_text('footer_installation') }}</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6>{{ get_text('footer_community') }}</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="https://github.com/marzneshin/marzneshin" class="text-muted text-decoration-none" target="_blank">{{ get_text('nav_github') }}</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Discord</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Telegram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="text-muted mb-0">{{ get_text('footer_copyright') }}</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="https://github.com/marzneshin/marzneshin" class="text-muted me-3" target="_blank">
+                        <i class="fab fa-github fa-lg"></i>
+                    </a>
+                    <a href="#" class="text-muted me-3">
+                        <i class="fab fa-discord fa-lg"></i>
+                    </a>
+                    <a href="#" class="text-muted">
+                        <i class="fab fa-telegram fa-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

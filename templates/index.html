@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% block title %}{{ get_text('hero_title') }} {{ get_text('hero_title_gradient') }}{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <div class="mb-3">
+                    <span class="badge bg-success fs-6 px-3 py-2">{{ get_text('hero_badge') }}</span>
+                </div>
+                <h1 class="display-4 fw-bold mb-4">
+                    {{ get_text('hero_title') }} <br>
+                    <span class="text-gradient">{{ get_text('hero_title_gradient') }}</span>
+                </h1>
+                <p class="lead mb-4">
+                    {{ get_text('hero_subtitle') }}
+                </p>
+                <div class="d-flex gap-3 justify-content-center flex-wrap">
+                    <a href="{{ url_for('docs_homepage') }}" class="btn-hero">
+                        <i class="fas fa-rocket me-2"></i>{{ get_text('hero_get_started') }}
+                    </a>
+                    <a href="https://github.com/marzneshin/marzneshin" class="btn btn-outline-light btn-lg" target="_blank">
+                        <i class="fab fa-github me-2"></i>{{ get_text('hero_view_github') }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-8 text-center">
+                <h2 class="display-5 fw-bold mb-3">{{ get_text('features_title') }}</h2>
+                <p class="lead text-muted">
+                    {{ get_text('features_subtitle') }}
+                </p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <!-- Feature 1 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>{{ get_text('feature1_title') }}</h3>
+                    <p>{{ get_text('feature1_desc') }}</p>
+                </div>
+            </div>
+            
+            <!-- Feature 2 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3>{{ get_text('feature2_title') }}</h3>
+                    <p>{{ get_text('feature2_desc') }}</p>
+                </div>
+            </div>
+            
+            <!-- Feature 3 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <h3>{{ get_text('feature3_title') }}</h3>
+                    <p>{{ get_text('feature3_desc') }}</p>
+                </div>
+            </div>
+            
+            <!-- Feature 4 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>{{ get_text('feature4_title') }}</h3>
+                    <p>{{ get_text('feature4_desc') }}</p>
+                </div>
+            </div>
+            
+            <!-- Feature 5 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>{{ get_text('feature5_title') }}</h3>
+                    <p>{{ get_text('feature5_desc') }}</p>
+                </div>
+            </div>
+            
+            <!-- Feature 6 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>{{ get_text('feature6_title') }}</h3>
+                    <p>{{ get_text('feature6_desc') }}</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Call to Action -->
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-8 text-center">
+                <div class="bg-white rounded-3 shadow-sm p-5">
+                    <h3 class="fw-bold mb-3">Ready to Get Started?</h3>
+                    <p class="text-muted mb-4">
+                        Join thousands of users who trust Marzneshin for their proxy management needs.
+                    </p>
+                    <div class="d-flex gap-3 justify-content-center flex-wrap">
+                        <a href="{{ url_for('docs_homepage') }}" class="btn-primary-custom">
+                            <i class="fas fa-book me-2"></i>Read Documentation
+                        </a>
+                        <a href="{{ url_for('show_documentation_page', page_slug='installation') }}" class="btn btn-outline-primary btn-lg">
+                            <i class="fas fa-download me-2"></i>Install Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Statistics Section -->
+<section class="py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-3 col-6 mb-4 mb-md-0">
+                <div class="h2 fw-bold mb-0">10K+</div>
+                <div class="text-white-50">Active Users</div>
+            </div>
+            <div class="col-md-3 col-6 mb-4 mb-md-0">
+                <div class="h2 fw-bold mb-0">99.9%</div>
+                <div class="text-white-50">Uptime</div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="h2 fw-bold mb-0">24/7</div>
+                <div class="text-white-50">Support</div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="h2 fw-bold mb-0">Open</div>
+                <div class="text-white-50">Source</div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

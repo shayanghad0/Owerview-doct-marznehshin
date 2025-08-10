@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+
+{% block title %}{{ get_text('docs_title') }} - Marzneshin{% endblock %}
+
+{% block content %}
+<div class="docs-container">
+    <div class="row g-0">
+        <!-- Sidebar -->
+        <div class="docs-sidebar">
+            <!-- Search -->
+            <div class="search-container">
+                <input type="text" id="search-input" class="search-input" placeholder="{{ get_text('docs_search_placeholder') }}">
+                <div id="search-results" class="search-results"></div>
+            </div>
+            
+            <!-- Navigation -->
+            <nav class="docs-nav">
+                {% for section, pages in doc_structure.items() %}
+                <h6>{{ section }}</h6>
+                {% for page in pages %}
+                <a href="{{ url_for('show_documentation_page', page_slug=page.slug) }}" class="nav-link">
+                    {{ page.title }}
+                </a>
+                {% endfor %}
+                {% endfor %}
+            </nav>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="docs-content">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-xl-10">
+                        <h1 class="display-4 fw-bold mb-4">{{ get_text('docs_title') }}</h1>
+                        <p class="lead text-muted mb-5">
+                            {{ get_text('docs_subtitle') }}
+                        </p>
+                        
+                        <!-- Quick Start Cards -->
+                        <div class="row g-4 mb-5">
+                            <div class="col-md-6">
+                                <div class="card border-0 shadow-sm h-100">
+                                    <div class="card-body p-4">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div class="feature-icon me-3" style="width: 50px; height: 50px; font-size: 1.25rem;">
+                                                <i class="fas fa-play"></i>
+                                            </div>
+                                            <h5 class="card-title mb-0">Get Started</h5>
+                                        </div>
+                                        <p class="card-text text-muted">
+                                            Learn the basics and get Marzneshin up and running in minutes.
+                                        </p>
+                                        <a href="{{ url_for('show_documentation_page', page_slug='getting-started') }}" class="btn btn-primary">
+                                            Start Here <i class="fas fa-arrow-right ms-2"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="card border-0 shadow-sm h-100">
+                                    <div class="card-body p-4">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div class="feature-icon me-3" style="width: 50px; height: 50px; font-size: 1.25rem;">
+                                                <i class="fas fa-download"></i>
+                                            </div>
+                                            <h5 class="card-title mb-0">Installation</h5>
+                                        </div>
+                                        <p class="card-text text-muted">
+                                            Step-by-step installation guide for Docker and manual setup.
+                                        </p>
+                                        <a href="{{ url_for('show_documentation_page', page_slug='installation') }}" class="btn btn-outline-primary">
+                                            Install Now <i class="fas fa-arrow-right ms-2"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Documentation Sections -->
+                        <div class="row g-4">
+                            {% for section, pages in doc_structure.items() %}
+                            <div class="col-lg-6">
+                                <div class="card border-0 shadow-sm h-100">
+                                    <div class="card-header bg-transparent border-0 pt-4 px-4 pb-0">
+                                        <h5 class="card-title">{{ section }}</h5>
+                                    </div>
+                                    <div class="card-body pt-2">
+                                        <ul class="list-unstyled">
+                                            {% for page in pages %}
+                                            <li class="mb-2">
+                                                <a href="{{ url_for('show_documentation_page', page_slug=page.slug) }}" class="text-decoration-none">
+                                                    <i class="fas fa-chevron-right text-muted me-2" style="font-size: 0.8rem;"></i>
+                                                    {{ page.title }}
+                                                </a>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        
+                        <!-- Help Section -->
+                        <div class="row mt-5">
+                            <div class="col-12">
+                                <div class="card border-0 shadow-sm bg-light">
+                                    <div class="card-body p-4 text-center">
+                                        <h5 class="card-title">Need Help?</h5>
+                                        <p class="card-text text-muted mb-4">
+                                            Can't find what you're looking for? We're here to help!
+                                        </p>
+                                        <div class="d-flex gap-3 justify-content-center flex-wrap">
+                                            <a href="https://github.com/marzneshin/marzneshin/issues" class="btn btn-outline-primary" target="_blank">
+                                                <i class="fab fa-github me-2"></i>Report Issue
+                                            </a>
+                                            <a href="#" class="btn btn-outline-primary">
+                                                <i class="fab fa-discord me-2"></i>Join Discord
+                                            </a>
+                                            <a href="#" class="btn btn-outline-primary">
+                                                <i class="fab fa-telegram me-2"></i>Telegram Group
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
