@@ -66,3 +66,8 @@ The complete requirements.txt content is documented in REQUIREMENTS.md since dir
 
 ## Environment Configuration
 The application reads configuration from environment variables, particularly for session secrets and deployment settings, making it suitable for various deployment environments including development and production.
+
+## Install
+```
+idk for yet
+```
